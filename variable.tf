@@ -34,7 +34,7 @@ variable "resourceGroup" {
 
 variable "dbKind" {
   type    = string
-  default = "<%=customOptions.azreurgprep_dbkind>"
+  default = "<%=customOptions.azreurgprep_dbkind%>"
 }
 
 variable "consistencyPolicyLevel" {
