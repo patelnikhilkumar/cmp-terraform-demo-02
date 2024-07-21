@@ -23,7 +23,7 @@ variable "client_secret" {
 }
 
 variable "region" {
-  default = "East US"
+  default = "West Europe"
 }
 
 variable "resourceGroup" {
