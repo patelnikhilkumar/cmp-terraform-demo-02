@@ -10,12 +10,12 @@ resource "random_integer" "ri" {
 
 resource "azurerm_cosmosdb_account" "db" {
   name                = var.cosmosdbAccountName #"tfex-cosmos-db-${random_integer.ri.result}"
-  location            = var.region #azurerm_resource_group.example.location
-  resource_group_name = var.resourceGroup #azurerm_resource_group.example.name
+  location            = var.region              #azurerm_resource_group.example.location
+  resource_group_name = var.resourceGroup       #azurerm_resource_group.example.name
   offer_type          = "Standard"
   kind                = var.dbKind #"MongoDB"
 
-  enable_automatic_failover = true
+  automatic_failover_enabled = true
 
   capabilities {
     name = "EnableAggregationPipeline"
