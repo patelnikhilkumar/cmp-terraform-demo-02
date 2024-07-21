@@ -1,7 +1,7 @@
-# resource "azurerm_resource_group" "example" {
-#   name     = "example-resource-group"
-#   location = "West Europe"
-# }
+resource "azurerm_resource_group" "example" {
+  name     = "example-resource-group"
+  location = var.region
+}
 
 resource "random_integer" "ri" {
   min = 10000
@@ -10,7 +10,7 @@ resource "random_integer" "ri" {
 
 resource "azurerm_cosmosdb_account" "db" {
   name                = var.cosmosdbAccountName #"tfex-cosmos-db-${random_integer.ri.result}"
-  location            = var.region              #azurerm_resource_group.example.location
+  location            = azurerm_resource_group.example.location
   resource_group_name = var.resourceGroup       #azurerm_resource_group.example.name
   offer_type          = "Standard"
   kind                = var.dbKind #"MongoDB"
