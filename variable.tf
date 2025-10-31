@@ -13,17 +13,19 @@ variable "tenant_id" {
 variable "client_id" {
   type      = string
   sensitive = true
-  # default   = "<%= customOptions.azurergprep_clientid %>"
+  default   = "<%= customOptions.azurergprep_clientid %>"
 }
 
 variable "client_secret" {
   type      = string
   sensitive = true
-  # default   = "<%= customOptions.azurergprep_clientsecret %>"
+  default   = "<%= customOptions.azurergprep_clientsecret %>"
 }
 
 variable "region" {
-  default = "West Europe"
+  description = "The Azure region where resources will be created."
+  type        = string
+  default     = "West Europe"
 }
 
 variable "resourceGroup" {
@@ -48,10 +50,10 @@ variable "cosmosdbAccountName" {
 }
 
 variable "defaultTags" {
-  type        = map(any)
-  description = "A map of the tags to use on the resources that are deployed with this module."
-
+ description = "A map of tags to assign to the resource."
+  type        = map(string)
   default = {
-    source = "HPE-CMP"
+    environment = "dev"
+    managed_by  = "terraform"
   }
 }
